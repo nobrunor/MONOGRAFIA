@@ -1,21 +1,48 @@
-setwd("C:/Users/bruno/Desktop/MONOGRAFIA/build/input")
-if(!require(devtools)) install.packages("devtools")
-devtools::install_github("datazoompuc/PNAD_Continua/r-package")
+#################################################################################
+#
+# The purpose is to extract monthly data of evapotranspiration for every Brazilians AMC
+# proposito
+#
+#################################################################################
+
+####################
+# Folder Path
+####################
+
+user <- Sys.info()[["user"]]
+message(sprintf("Current User: %s\n"))
+if (user == "Bruno") {
+  ROOT <- "C:/Users/Bruno/Desktop/MONOGRAFIA"
+} else if (user == "f.cavalcanti") {
+  ROOT <- "C:/Users/Francisco/Dropbox"
+} else {
+  stop("Invalid user")
+}
+
+home_dir <- file.path(ROOT, "build")
+in_dir <- file.path(ROOT, "build", "input")
+out_dir <- file.path(ROOT, "build", "output")
+tmp_dir <- file.path(ROOT, "build", "tmp")
+code_dir <- file.path(ROOT, "build", "code")
+
+
+####################
+# load library
+####################
+
 library(datazoom.pnadcontinua)
+library(tidyverse)
 
+###################
+# call data
+###################
 
+data <- datazoom.pnadcontinua::load_pnadcontinua(sources = "C:/Users/Bruno/Desktop/MONOGRAFIA/build/input_sample")
 
-# Chamar uma base de dados #
+###################
+# população de cada estado
+###################
 
-dates <- list(c(1, 2012), c(2, 2012))
+popuf <- data$pnadc_012015 %>% select(UF, V1028) %>% group_by(UF) %>% mutate(popuf = sum(!is.na(V1028)))
 
-microdata <- load_pnadc(panel = 'no', lang = 'portuguese',
-                        sources = dates,
-                        download_directory = './Desktop')
-
-# Limpar a base de dados (deixar só as variáveis de interesse) #
-data <- microdata%>%mutate
-
-# Salvar a base de dados limpa #
-write.csv(data, "C:/Users/bruno/Desktop/MONOGRAFIA/build/output/data1.csv")
 
