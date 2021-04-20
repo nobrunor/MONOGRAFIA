@@ -87,3 +87,4 @@ build/input/PNADC_microdata/PNADC_022012_20190729.txt
 build/input/PNADC_microdata/PNADC_032012_20190729.txt
 build/input/PNADC_microdata/PNADC_042012_20190729.txt
 build/input_sample/PNADC_012015.txt
+build/input/*.dta

@@ -32,6 +32,7 @@ code_dir <- file.path(ROOT, "build", "code")
 
 library(datazoom.pnadcontinua)
 library(tidyverse)
+library(haven)
 
 ###################
 # call data
@@ -39,10 +40,27 @@ library(tidyverse)
 
 data <- datazoom.pnadcontinua::load_pnadcontinua(sources = "C:/Users/Bruno/Desktop/MONOGRAFIA/build/input_sample")
 
+data <- read_dta("C:/Users/Bruno/Desktop/MONOGRAFIA/build/input/PNADC2012.dta")
+
 ###################
 # população de cada estado
 ###################
 
-popuf <- data$pnadc_012015 %>% select(UF, V1028) %>% group_by(UF) %>% mutate(popuf = sum(!is.na(V1028)))
+popuf <- data %>% select(UF, V1028, Trimestre) %>% group_by(UF, Trimestre) %>% mutate(popuf = sum(V1028)) %>% summarise(aux = mean(popuf))
+
+# salvar em um arquivo csv # - resolver isso (pendente) #
+
+write.csv(popuf, file = "out_dir")
+
+########################
+# ocupados de cada estado
+########################
+
+
+
+class(data$pnadc_012015)
+
+ab <- as_tibble(data$pnadc_012015)
+
 
 
