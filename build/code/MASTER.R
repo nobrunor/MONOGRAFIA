@@ -135,6 +135,7 @@ write.csv(desalent, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalentp
 # trabalhadores informais de cada estado
 ########################
 
+
 ########################
 # carteira assinada de cada estado
 ########################
@@ -166,16 +167,66 @@ write.csv(inss, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/inssuf.csv")
 # trabalhadores no setor privado de cada estado
 ########################
 
+priv <- data %>%
+  select(UF, V1028, Trimestre, V4012) %>%
+  filter(V4012 == 3) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(privuf = mean(aux))
+
+write.csv(priv, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/privuf.csv")
 
 ########################
 # trabalhadores no setor público de cada estado
 ########################
 
+publ <- data %>%
+  select(UF, V1028, Trimestre, V4012) %>%
+  filter(V4012 == 4) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(publuf = mean(aux))
+
+write.csv(publ, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/publuf.csv")
 
 ########################
-# quantidade de ocupados industria de cada estado
+# quantidade de ocupados agricultura (primario) de cada estado
 ########################
 
+prim <- data %>%
+  select(UF, V1028, Trimestre, VD4010) %>%
+  filter(VD4010 == 1) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(primuf = mean(aux))
+
+write.csv(prim, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/primuf.csv")
+
+########################
+# quantidade de ocupados indústria (secundario) de cada estado
+########################
+
+sec <- data %>%
+  select(UF, V1028, Trimestre, VD4010) %>%
+  filter(VD4010 == 2 | VD4010 == 3) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(secuf = mean(aux))
+
+write.csv(sec, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/secuf.csv")
+
+########################
+# quantidade de ocupados comercio e serviços (terciario) de cada estado
+########################
+
+terc <- data %>%
+  select(UF, V1028, Trimestre, VD4010) %>%
+  filter(VD4010 == 4 | VD4010 == 5 | VD4010 == 6 | VD4010 == 7 | VD4010 == 8 | VD4010 == 9) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(tercuf = mean(aux))
+
+write.csv(terc, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/tercuf.csv")
 
 
 
