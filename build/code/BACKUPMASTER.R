@@ -33,9 +33,7 @@ library(haven)
 
 data <- datazoom.pnadcontinua::load_pnadcontinua(sources = "C:/Users/Bruno/Desktop/MONOGRAFIA/build/input_sample")
 
-for (yr in 2012:2019) {
-
-data <- read_dta(paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/input/PNADC", yr, ".dta"))
+data <- read_dta("C:/Users/Bruno/Desktop/MONOGRAFIA/build/input/PNADC2012dta")
 
 ###################
 # população de cada estado
@@ -48,7 +46,7 @@ popuf <- data %>%
   summarise(popuf = mean(aux))
 
 
-write.csv(popuf, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/popuf", yr, ".csv")
+write.csv(popuf, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/popuf2012.csv")
 
 ########################
 # PIA de cada estado
@@ -61,7 +59,7 @@ pia <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(piauf = mean(aux))
 
-write.csv(pia, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/piauf", yr, ".csv")
+write.csv(pia, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/piauf2012.csv")
 
 ########################
 # PEA de cada estado
@@ -74,7 +72,7 @@ pea <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(peauf = mean(aux))
 
-write.csv(pea, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/peauf", yr, ".csv")
+write.csv(pea, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/peauf2012.csv")
 
 ########################
 # ocupados de cada estado
@@ -87,7 +85,7 @@ ocup <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupuf = mean(aux))
 
-write.csv(ocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv")
+write.csv(ocup, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf2012.csv")
 
 ########################
 # desocupados de cada estado
@@ -100,7 +98,7 @@ desocup <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(desocupuf = mean(aux))
 
-write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desocupuf", yr, ".csv")
+write.csv(desocup, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desocupuf2012.csv")
 
 ########################
 # desalentados de cada estado
@@ -113,7 +111,7 @@ desalent <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(desalentuf = mean(aux))
 
-write.csv(desalent, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalentuf", yr, ".csv")
+write.csv(desalent, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalentpuf2012.csv")
 
 ########################
 # nemnem de cada estado
@@ -128,7 +126,7 @@ write.csv(desalent, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalent
   #summarise(nemnem = mean(aux),
   #          teste = mean(aux2))#
 
-#write.csv(nemnemuf, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/nemnem2012.csv")#
+#write.csv(desalent, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/nemnem2012.csv")#
 
 
 
@@ -142,9 +140,9 @@ formal <- data %>%
         (VD4009 == 8 & VD4012 == 1) | (VD4009 == 9 & VD4012 == 1)) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(formaluf = mean(aux))
+  summarise(formal = mean(aux))
 
-write.csv(formaluf, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaluf", yr, ".csv")
+write.csv(desalent, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formal2012.csv")
 
 
 ########################
@@ -157,9 +155,9 @@ informal <- data %>%
            (VD4009 == 8 & VD4012 == 2) | (VD4009 == 9 & VD4012 == 2)) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(informaluf = mean(aux))
+  summarise(informal = mean(aux))
 
-write.csv(informaluf, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaluf", yr, ".csv")
+write.csv(desalent, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informal2012.csv")
 
 
 ########################
@@ -173,7 +171,7 @@ cart <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(cartuf = mean(aux))
 
-write.csv(cart, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/cartuf", yr, ".csv")
+write.csv(cart, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/cartuf2012.csv")
 
 ########################
 # contribuintes de cada estado
@@ -186,7 +184,7 @@ inss <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(inssuf = mean(aux))
 
-write.csv(inss, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/inssuf", yr, ".csv")
+write.csv(inss, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/inssuf2012.csv")
 
 
 ########################
@@ -200,7 +198,7 @@ priv <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(privuf = mean(aux))
 
-write.csv(priv, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/privuf", yr, ".csv")
+write.csv(priv, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/privuf2012.csv")
 
 ########################
 # trabalhadores no setor público de cada estado
@@ -213,7 +211,7 @@ publ <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(publuf = mean(aux))
 
-write.csv(publ, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/publuf", yr, ".csv")
+write.csv(publ, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/publuf2012.csv")
 
 ########################
 # quantidade de ocupados agricultura (primario) de cada estado
@@ -226,7 +224,7 @@ prim <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(primuf = mean(aux))
 
-write.csv(prim, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/primuf", yr, ".csv")
+write.csv(prim, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/primuf2012.csv")
 
 ########################
 # quantidade de ocupados indústria (secundario) de cada estado
@@ -239,7 +237,7 @@ sec <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(secuf = mean(aux))
 
-write.csv(sec, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/secuf", yr, ".csv")
+write.csv(sec, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/secuf2012.csv")
 
 ########################
 # quantidade de ocupados comercio e serviços (terciario) de cada estado
@@ -252,7 +250,7 @@ terc <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(tercuf = mean(aux))
 
-write.csv(terc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/tercuf", yr, ".csv")
+write.csv(terc, file ="C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/tercuf2012.csv")
 }
 
 
