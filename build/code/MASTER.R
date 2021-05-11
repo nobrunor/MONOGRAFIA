@@ -27,6 +27,14 @@ library(datazoom.pnadcontinua)
 library(tidyverse)
 library(haven)
 
+
+#################################
+### aumentando o memory limit ###
+#################################
+
+memory.limit (9999999999)
+
+
 ###################
 # call data
 ###################
