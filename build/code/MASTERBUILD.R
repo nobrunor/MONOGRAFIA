@@ -95,6 +95,13 @@ ocup <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupuf = mean(aux))
 
+  ocupfaixaetaria1 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
+  filter(VD4002 == 1 | V2009 >= 18 | V2009 <= 24) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupuf = mean(aux))
+
 write.csv(ocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv"))
 
 ########################
