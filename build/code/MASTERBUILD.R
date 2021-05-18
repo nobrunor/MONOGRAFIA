@@ -26,6 +26,7 @@ code_dir <- file.path(ROOT, "build", "code")
 library(datazoom.pnadcontinua)
 library(tidyverse)
 library(haven)
+library(dplyr)
 
 
 #################################
@@ -95,14 +96,172 @@ ocup <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupuf = mean(aux))
 
-  ocupfaixaetaria1 <- data %>%
+ocupfaixaetaria1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
-  filter(VD4002 == 1 | V2009 >= 18 | V2009 <= 24) %>%
+  filter(VD4002 == 1 & V2009 >= 18 & V2009 <= 24) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(ocupuf = mean(aux))
+  summarise(ocupfaixaetaria1 = mean(aux))
 
-write.csv(ocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv"))
+ocupfaixaetaria2 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
+  filter(VD4002 == 1 & V2009 >= 25 & V2009 <= 29) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupfaixaetaria2 = mean(aux))
+
+ocupfaixaetaria3 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
+  filter(VD4002 == 1 & V2009 >= 30 & V2009 <= 39) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupfaixaetaria3 = mean(aux))
+
+
+ocupfaixaetaria4 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
+  filter(VD4002 == 1 & V2009 >= 40 & V2009 <= 49) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupfaixaetaria4 = mean(aux))
+
+
+ocupfaixaetaria5 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
+  filter(VD4002 == 1 & V2009 >= 50 & V2009 <= 59) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupfaixaetaria5 = mean(aux))
+
+
+ocupfaixaetaria6 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
+  filter(VD4002 == 1 & V2009 >= 60) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupfaixaetaria6 = mean(aux))
+
+ocupeduc1 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 1) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc1 = mean(aux))
+
+ocupeduc2 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 2) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc2 = mean(aux))
+
+ocupeduc3 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 3) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc3 = mean(aux))
+
+ocupeduc4 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 4) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc4 = mean(aux))
+
+ocupeduc5 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 5) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc5 = mean(aux))
+
+ocupeduc6 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 6) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc6 = mean(aux))
+
+ocupeduc7 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
+  filter(VD4002 == 1 & VD3004 = 7) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupeduc7 = mean(aux))
+
+ocupraca1 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
+  filter(VD4002 == 1 & V2010 = 1) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupraca1 = mean(aux))
+
+ocupraca2 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
+  filter(VD4002 == 1 & V2010 = 2) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupraca2 = mean(aux))
+
+ocupraca3 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
+  filter(VD4002 == 1 & V2010 = 3) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupraca3 = mean(aux))
+
+ocupraca4 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
+  filter(VD4002 == 1 & V2010 = 4) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupraca4 = mean(aux))
+
+ocupraca5 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
+  filter(VD4002 == 1 & V2010 = 5) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupraca5 = mean(aux))
+
+ocugenero1 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2007) %>%
+  filter(VD4002 == 1 & V2010 = 1) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupgenero1 = mean(aux))
+
+ocugenero2 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, V2007) %>%
+  filter(VD4002 == 1 & V2010 = 2) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(ocupgenero2 = mean(aux))
+
+x <- merge(ocup, ocupfaixaetaria1, by = c("UF", "Trimestre"))
+x <- merge(x, ocupfaixaetaria2, by = c("UF", "Trimestre"))
+x <- merge(x, ocupfaixaetaria3, by = c("UF", "Trimestre"))
+x <- merge(x, ocupfaixaetaria4, by = c("UF", "Trimestre"))
+x <- merge(x, ocupfaixaetaria5, by = c("UF", "Trimestre"))
+x <- merge(x, ocupfaixaetaria6, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc1, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc2, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc3, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc4, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc5, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc6, by = c("UF", "Trimestre"))
+x <- merge(x, ocupeduc7, by = c("UF", "Trimestre"))
+x <- merge(x, ocupraca1, by = c("UF", "Trimestre"))
+x <- merge(x, ocupraca2, by = c("UF", "Trimestre"))
+x <- merge(x, ocupraca3, by = c("UF", "Trimestre"))
+x <- merge(x, ocupraca4, by = c("UF", "Trimestre"))
+x <- merge(x, ocupraca5, by = c("UF", "Trimestre"))
+x <- merge(x, ocupgenero1, by = c("UF", "Trimestre"))
+x <- merge(x, ocupgenero2, by = c("UF", "Trimestre"))
+x <- x %>% mutate(year = 2012)
+
+write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv"))
 
 ########################
 # desocupados de cada estado
