@@ -305,35 +305,35 @@ ocupnorte <- data %>%
   filter(VD4002 == "1" & UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(ocuprural = mean(aux))
+  summarise(ocupnorte = mean(aux))
 
 ocupnordeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(ocuprural = mean(aux))
+  summarise(ocupnordeste = mean(aux))
 
 ocupsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & UF == "31" | UF == "32" | UF == "33"| UF == "34"| UF == "35") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(ocuprural = mean(aux))
+  summarise(ocupsudeste = mean(aux))
 
 ocupsul <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & UF == "41" | UF == "42" | UF == "43") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(ocuprural = mean(aux))
+  summarise(ocupsul = mean(aux))
 
 ocupcentrooeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & UF == "50" | UF == "51" | UF == "52"| UF == "53") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(ocuprural = mean(aux))
+  summarise(ocupcentrooeste = mean(aux))
 
 
 
@@ -624,7 +624,7 @@ informalnorte <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(informalrural = mean(aux))
+  summarise(informalnorte = mean(aux))
 
 informalnordeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
@@ -633,7 +633,7 @@ informalnordeste <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(informalrural = mean(aux))
+  summarise(informalnordeste = mean(aux))
 
 informalsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
@@ -642,7 +642,7 @@ informalsudeste <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(informalrural = mean(aux))
+  summarise(informalsudeste = mean(aux))
 
 informalsul <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
@@ -651,7 +651,7 @@ informalsul <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(informalrural = mean(aux))
+  summarise(informalsul = mean(aux))
 
 informalcentrooeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
@@ -660,7 +660,7 @@ informalcentrooeste <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(informalrural = mean(aux))
+  summarise(informalcentrooeste = mean(aux))
 
 x <- merge(informal, informalfaixaetaria1, by = c("UF", "Trimestre"), all = TRUE)
 x <- merge(x, informalfaixaetaria2, by = c("UF", "Trimestre"), all = TRUE)
