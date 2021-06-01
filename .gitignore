@@ -91,3 +91,4 @@ build/input/*.dta
 *.csv
 *.sas
 *.zip
+build/input/PNADC_012021.txt

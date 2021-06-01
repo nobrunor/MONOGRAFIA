@@ -41,12 +41,6 @@ memory.limit (9999999999)
 # call data
 ###################
 
-lista_ano <- c("012012.txt",
-               "022012.txt",
-               "032012.txt",
-               "042012.txt",
-               "012013.txt")
-
 
 lista_ano <- c("012012.txt",
                "022012.txt",
@@ -83,7 +77,8 @@ lista_ano <- c("012012.txt",
                "012020.txt",
                "022020.txt",
                "032020.txt",
-               "042020.txt")
+               "042020.txt",
+               "012021.txt")
 
 
 
@@ -306,28 +301,28 @@ ocuprural <- data %>%
   summarise(ocuprural = mean(aux))
 
 
-x <- merge(ocup, ocupfaixaetaria1, by = c("UF", "Trimestre"))
-x <- merge(x, ocupfaixaetaria2, by = c("UF", "Trimestre"))
-x <- merge(x, ocupfaixaetaria3, by = c("UF", "Trimestre"))
-x <- merge(x, ocupfaixaetaria4, by = c("UF", "Trimestre"))
-x <- merge(x, ocupfaixaetaria5, by = c("UF", "Trimestre"))
-x <- merge(x, ocupfaixaetaria6, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc1, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc2, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc3, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc4, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc5, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc6, by = c("UF", "Trimestre"))
-x <- merge(x, ocupeduc7, by = c("UF", "Trimestre"))
-x <- merge(x, ocupraca1, by = c("UF", "Trimestre"))
-x <- merge(x, ocupraca2, by = c("UF", "Trimestre"))
-x <- merge(x, ocupraca3, by = c("UF", "Trimestre"))
-x <- merge(x, ocupraca4, by = c("UF", "Trimestre"))
-x <- merge(x, ocupraca5, by = c("UF", "Trimestre"))
-x <- merge(x, ocupgenero1, by = c("UF", "Trimestre"))
-x <- merge(x, ocupgenero2, by = c("UF", "Trimestre"))
-x <- merge(x, ocupurbana, by = c("UF", "Trimestre"))
-x <- merge(x, ocuprural, by = c("UF", "Trimestre"))
+x <- merge(ocup, ocupfaixaetaria1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria6, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc6, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc7, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupraca1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupraca2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupraca3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupraca4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupraca5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupgenero1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupgenero2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocupurbana, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocuprural, by = c("UF", "Trimestre"), all = TRUE)
 x <- x %>% mutate(year = yr)
 
 write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv"))
@@ -381,8 +376,8 @@ write.csv(desalent, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalent
 
 formal <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012) %>%
-  filter(VD4009 == 1 | VD4009 == 3 | VD4009 == 5 | VD4009 == 7 |
-        (VD4009 == 8 & VD4012 == 1) | (VD4009 == 9 & VD4012 == 1)) %>%
+  filter(VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "01") | (VD4009 == "09" & VD4012 == "01")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaluf = mean(aux))
@@ -581,28 +576,28 @@ informalrural <- data %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalrural = mean(aux))
 
-x <- merge(informal, informalfaixaetaria1, by = c("UF", "Trimestre"))
-x <- merge(x, informalfaixaetaria2, by = c("UF", "Trimestre"))
-x <- merge(x, informalfaixaetaria3, by = c("UF", "Trimestre"))
-x <- merge(x, informalfaixaetaria4, by = c("UF", "Trimestre"))
-x <- merge(x, informalfaixaetaria5, by = c("UF", "Trimestre"))
-x <- merge(x, informalfaixaetaria6, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc1, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc2, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc3, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc4, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc5, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc6, by = c("UF", "Trimestre"))
-x <- merge(x, informaleduc7, by = c("UF", "Trimestre"))
-x <- merge(x, informalraca1, by = c("UF", "Trimestre"))
-x <- merge(x, informalraca2, by = c("UF", "Trimestre"))
-x <- merge(x, informalraca3, by = c("UF", "Trimestre"))
-x <- merge(x, informalraca4, by = c("UF", "Trimestre"))
-x <- merge(x, informalraca5, by = c("UF", "Trimestre"))
-x <- merge(x, informalgenero1, by = c("UF", "Trimestre"))
-x <- merge(x, informalgenero2, by = c("UF", "Trimestre"))
-x <- merge(x, informalurbana, by = c("UF", "Trimestre"))
-x <- merge(x, informalrural, by = c("UF", "Trimestre"))
+x <- merge(informal, informalfaixaetaria1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria6, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc6, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informaleduc7, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalraca1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalraca2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalraca3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalraca4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalraca5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalgenero1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalgenero2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalurbana, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informalrural, by = c("UF", "Trimestre"), all = TRUE)
 x <- x %>% mutate(year = yr)
 
 write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaluf", yr, ".csv"))
@@ -666,7 +661,7 @@ write.csv(publ, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/publuf", yr,
 
 prim <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4010) %>%
-  filter(VD4010 == 1) %>%
+  filter(VD4010 == "01") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(primuf = mean(aux))
@@ -680,7 +675,7 @@ write.csv(prim, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/primuf", yr,
 
 sec <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4010) %>%
-  filter(VD4010 == 2 | VD4010 == 3) %>%
+  filter(VD4010 == "02" | VD4010 == "03") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(secuf = mean(aux))
@@ -694,7 +689,7 @@ write.csv(sec, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/secuf", yr, "
 
 terc <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4010) %>%
-  filter(VD4010 == 4 | VD4010 == 5 | VD4010 == 6 | VD4010 == 7 | VD4010 == 8 | VD4010 == 9) %>%
+  filter(VD4010 == "04" | VD4010 == "05" | VD4010 == "06" | VD4010 == "07" | VD4010 == "08" | VD4010 == "09") %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(tercuf = mean(aux))
@@ -706,20 +701,20 @@ write.csv(terc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/tercuf", yr,
 ### juntando as bases de dados ####
 ###################################
 
-x <- merge(pea, pia, by = c("UF", "Trimestre"))
-x <- merge(x, desocup, by = c("UF", "Trimestre"))
-x <- merge(x, cart, by = c("UF", "Trimestre"))
-x <- merge(x, desalent, by = c("UF", "Trimestre"))
-x <- merge(x, formal, by = c("UF", "Trimestre"))
-x <- merge(x, informal, by = c("UF", "Trimestre"))
-x <- merge(x, inss, by = c("UF", "Trimestre"))
-x <- merge(x, ocup, by = c("UF", "Trimestre"))
-x <- merge(x, popuf, by = c("UF", "Trimestre"))
-x <- merge(x, prim, by = c("UF", "Trimestre"))
-x <- merge(x, priv, by = c("UF", "Trimestre"))
-x <- merge(x, publ, by = c("UF", "Trimestre"))
-x <- merge(x, sec, by = c("UF", "Trimestre"))
-x <- merge(x, terc, by = c("UF", "Trimestre"))
+x <- merge(pea, pia, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, desocup, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, cart, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, desalent, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formal, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, informal, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, inss, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, ocup, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, popuf, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, prim, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, priv, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, publ, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, sec, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, terc, by = c("UF", "Trimestre"), all = TRUE)
 x <- x %>% mutate(year = yr)
 
 write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/output/pnadc", yr, ".csv"))
