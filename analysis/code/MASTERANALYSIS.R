@@ -26,30 +26,9 @@ code_dir <- file.path(ROOT, "analysis", "code")
 library(tidyverse)
 library(haven)
 library(ggplot2)
+library(hrbrthemes)
+library(dplyr)
 
-
-###################################
-### juntando as bases de dados ####
-###################################
-
-x <- merge(pea, pia, by = c("UF", "Trimestre"))
-x <- merge(x, desocup, by = c("UF", "Trimestre"))
-x <- merge(x, cart, by = c("UF", "Trimestre"))
-x <- merge(x, desalent, by = c("UF", "Trimestre"))
-x <- merge(x, formal, by = c("UF", "Trimestre"))
-x <- merge(x, informal, by = c("UF", "Trimestre"))
-x <- merge(x, inss, by = c("UF", "Trimestre"))
-x <- merge(x, ocup, by = c("UF", "Trimestre"))
-x <- merge(x, popuf, by = c("UF", "Trimestre"))
-x <- merge(x, prim, by = c("UF", "Trimestre"))
-x <- merge(x, priv, by = c("UF", "Trimestre"))
-x <- merge(x, publ, by = c("UF", "Trimestre"))
-x <- merge(x, sec, by = c("UF", "Trimestre"))
-x <- merge(x, terc, by = c("UF", "Trimestre"))
-x <- x %>% mutate(year = yr)
-
-write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/output/pnadc", yr, ".csv"))
-}
 
 
 #####################
@@ -58,21 +37,62 @@ write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/output/pnadc", yr, 
 
 setwd(in_dir)
 
-x12 <- read.csv("pnadc2012.csv")
-x13 <- read.csv("pnadc2013.csv")
-x14 <- read.csv("pnadc2014.csv")
-x15 <- read.csv("pnadc2015.csv")
-x16 <- read.csv("pnadc2016.csv")
-x17 <- read.csv("pnadc2017.csv")
-x18 <- read.csv("pnadc2018.csv")
-x19 <- read.csv("pnadc2019.csv")
+x121 <- read.csv("pnadc012012.csv")
+x122 <- read.csv("pnadc022012.csv")
+x123 <- read.csv("pnadc032012.csv")
+x124 <- read.csv("pnadc042012.csv")
+x131 <- read.csv("pnadc012013.csv")
+x132 <- read.csv("pnadc022013.csv")
+x133 <- read.csv("pnadc032013.csv")
+x134 <- read.csv("pnadc042013.csv")
+x141 <- read.csv("pnadc012014.csv")
+x142 <- read.csv("pnadc022014.csv")
+x143 <- read.csv("pnadc032014.csv")
+x144 <- read.csv("pnadc042014.csv")
+x151 <- read.csv("pnadc012015.csv")
+x152 <- read.csv("pnadc022015.csv")
+x153 <- read.csv("pnadc032015.csv")
+x154 <- read.csv("pnadc042015.csv")
+x161 <- read.csv("pnadc012016.csv")
+x162 <- read.csv("pnadc022016.csv")
+x163 <- read.csv("pnadc032016.csv")
+x164 <- read.csv("pnadc042016.csv")
+x171 <- read.csv("pnadc012017.csv")
+x172 <- read.csv("pnadc022017.csv")
+x173 <- read.csv("pnadc032017.csv")
+x174 <- read.csv("pnadc042017.csv")
+x181 <- read.csv("pnadc012018.csv")
+x182 <- read.csv("pnadc022018.csv")
+x183 <- read.csv("pnadc032018.csv")
+x184 <- read.csv("pnadc042018.csv")
+x191 <- read.csv("pnadc012019.csv")
+x192 <- read.csv("pnadc022019.csv")
+x193 <- read.csv("pnadc032019.csv")
+x194 <- read.csv("pnadc042019.csv")
+x201 <- read.csv("pnadc012020.csv")
+x202 <- read.csv("pnadc022020.csv")
+x203 <- read.csv("pnadc032020.csv")
+x204 <- read.csv("pnadc042020.csv")
+x211 <- read.csv("pnadc012021.csv")
 
-x <- rbind(x12, x13, x14, x15, x16, x17, x18, x19)
+x <- rbind(x121, x122, x123, x124, x131, x132, x133, x134, x141, x142, x143, x144, x151, x152, x153, x154,
+           x161, x162, x163, x164, x171, x172, x173, x174, x181, x182, x183, x184, x191, x192, x193, x194,
+           x201, x202, x203, x204, x211)
 
 
 ######################
 ## fazendo graficos ##
 ######################
+
+item1 <- x %>%
+  mutate(informal = sum(informaluf),
+         ocup = sum(ocupuf)) %>%
+  summarise()
+  mutate(taxadeinformalidade = (informaluf/ocupuf)*100) %>%
+  ggplot(aes(year, taxadeinformalidade, colour = UF)) +
+  geom_point()
+
+
 x %>% group_by(UF) %>%  mutate(taxadeinformalidade = (informaluf/ocupuf)*100) %>%
   ggplot(aes(year, taxadeinformalidade, colour = UF)) +
   geom_point()
