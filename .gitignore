@@ -92,3 +92,5 @@ build/input/*.dta
 *.sas
 *.zip
 build/input/PNADC_012021.txt
+build/code/masterbuildsalario.R
+build/code/scatterplot

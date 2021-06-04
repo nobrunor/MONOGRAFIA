@@ -637,7 +637,7 @@ informalnordeste <- data %>%
 
 informalsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & UF == "31" | UF == "32" | UF == "33"| UF == "34"| UF == "35"
+  filter(VD4002 == "1" & UF == "31" | UF == "32" | UF == "33"| UF == "35"
            & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
   group_by(UF, Trimestre) %>%
@@ -693,6 +693,19 @@ x <- x %>% mutate(year = yr)
 
 write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaluf", yr, ".csv"))
 
+##############################################
+# informais não contribuintes de cada estado #
+##############################################
+
+informalnc <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
+  filter(VD4002 == "1" & ((VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(informalncuf = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalncuf", yr, ".csv"))
+
 ########################
 # carteira assinada de cada estado
 ########################
@@ -718,6 +731,7 @@ inss <- data %>%
   summarise(inssuf = mean(aux))
 
 write.csv(inss, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/inssuf", yr, ".csv"))
+
 
 
 ########################
