@@ -302,35 +302,35 @@ ocuprural <- data %>%
 
 ocupnorte <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
-  filter(VD4002 == "1" & UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17") %>%
+  filter(VD4002 == "1" & (UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupnorte = mean(aux))
 
 ocupnordeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
-  filter(VD4002 == "1" & UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29") %>%
+  filter(VD4002 == "1" & (UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupnordeste = mean(aux))
 
 ocupsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
-  filter(VD4002 == "1" & UF == "31" | UF == "32" | UF == "33"| UF == "34"| UF == "35") %>%
+  filter(VD4002 == "1" & (UF == "31" | UF == "32" | UF == "33"| UF == "34"| UF == "35")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsudeste = mean(aux))
 
 ocupsul <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
-  filter(VD4002 == "1" & UF == "41" | UF == "42" | UF == "43") %>%
+  filter(VD4002 == "1" & (UF == "41" | UF == "42" | UF == "43")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsul = mean(aux))
 
 ocupcentrooeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
-  filter(VD4002 == "1" & UF == "50" | UF == "51" | UF == "52"| UF == "53") %>%
+  filter(VD4002 == "1" & (UF == "50" | UF == "51" | UF == "52"| UF == "53")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupcentrooeste = mean(aux))
@@ -418,10 +418,76 @@ write.csv(desalent, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalent
 formal <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012) %>%
   filter(VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
-        (VD4009 == "08" & VD4012 == "01") | (VD4009 == "09" & VD4012 == "01")) %>%
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1")) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaluf = mean(aux))
+
+formaleduc1 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "1" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc1 = mean(aux))
+
+formaleduc2 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "2" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc2 = mean(aux))
+
+formaleduc3 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "3" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc3 = mean(aux))
+
+formaleduc4 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "4" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc4 = mean(aux))
+
+formaleduc5 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "5" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc5 = mean(aux))
+
+formaleduc6 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "6" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc6 = mean(aux))
+
+formaleduc7 <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
+  filter(VD3004 == "7" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
+  group_by(UF, Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(formaleduc7 = mean(aux))
+
+
+x <- merge(formal, formaleduc1, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formaleduc2, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formaleduc3, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formaleduc4, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formaleduc5, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formaleduc6, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(x, formaleduc7, by = c("UF", "Trimestre"), all = TRUE)
+x <- x %>% mutate(year = yr)
 
 write.csv(formal, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaluf", yr, ".csv"))
 
@@ -432,32 +498,32 @@ write.csv(formal, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaluf",
 
 informal <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaluf = mean(aux))
 
 informalfaixaetaria1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2009 >= 18 & V2009 <= 24 & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2009 >= 18 & V2009 <= 24) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria1 = mean(aux))
 
 informalfaixaetaria2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2009 >= 25 & V2009 <= 29 & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2009 >= 25 & V2009 <= 29) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria2 = mean(aux))
 
 informalfaixaetaria3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2009 >= 30 & V2009 <= 39 & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2009 >= 30 & V2009 <= 39) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria3 = mean(aux))
@@ -465,8 +531,8 @@ informalfaixaetaria3 <- data %>%
 
 informalfaixaetaria4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2009 >= 40 & V2009 <= 49 & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2009 >= 40 & V2009 <= 49) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria4 = mean(aux))
@@ -474,8 +540,8 @@ informalfaixaetaria4 <- data %>%
 
 informalfaixaetaria5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2009 >= 50 & V2009 <= 59 & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2009 >= 50 & V2009 <= 59) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria5 = mean(aux))
@@ -483,181 +549,181 @@ informalfaixaetaria5 <- data %>%
 
 informalfaixaetaria6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2009 >= 60 & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2009 >= 60) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria6 = mean(aux))
 
 informaleduc1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "1" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc1 = mean(aux))
 
 informaleduc2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "2" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc2 = mean(aux))
 
 informaleduc3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "3" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "3") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc3 = mean(aux))
 
 informaleduc4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "4" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "4") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc4 = mean(aux))
 
 informaleduc5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "5" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "5") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc5 = mean(aux))
 
 informaleduc6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "6" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "6") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc6 = mean(aux))
 
 informaleduc7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & VD3004 == "7" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (VD3004 == "7") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc7 = mean(aux))
 
 informalraca1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2010 == "1" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2010 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca1 = mean(aux))
 
 informalraca2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2010 == "2" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2010 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca2 = mean(aux))
 
 informalraca3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2010 == "3" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2010 == "3") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca3 = mean(aux))
 
 informalraca4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2010 == "4" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2010 == "4") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca4 = mean(aux))
 
 informalraca5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2010 == "5" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2010 == "5") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca5 = mean(aux))
 
 informalgenero1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2007, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2007 == "1" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2007 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalgenero1 = mean(aux))
 
 informalgenero2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2007, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V2007 == "2" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V2007 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalgenero2 = mean(aux))
 
 informalurbana <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V1022 == "1" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V1022 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(inforurbana = mean(aux))
 
 informalrural <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & V1022 == "2" & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (V1022 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalrural = mean(aux))
 
 informalnorte <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17"
-           & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17") &
+           (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalnorte = mean(aux))
 
 informalnordeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29"
-           & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29") &
+           (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalnordeste = mean(aux))
 
 informalsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & UF == "31" | UF == "32" | UF == "33"| UF == "35"
-           & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (UF == "31" | UF == "32" | UF == "33"| UF == "35") &
+           (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsudeste = mean(aux))
 
 informalsul <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & UF == "41" | UF == "42" | UF == "43"
-           & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (UF == "41" | UF == "42" | UF == "43") &
+           (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsul = mean(aux))
 
 informalcentrooeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
-  filter(VD4002 == "1" & UF == "50" | UF == "51" | UF == "52"| UF == "53"
-           & VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
-           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2")) %>%
+  filter(VD4002 == "1" & (UF == "50" | UF == "51" | UF == "52"| UF == "53") &
+           (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
+           (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalcentrooeste = mean(aux))
