@@ -34,7 +34,7 @@ library(PNADcIBGE)
 ### aumentando o memory limit ###
 #################################
 
-memory.limit (9999999999)
+memory.limit (9999999999999999)
 
 
 ###################
