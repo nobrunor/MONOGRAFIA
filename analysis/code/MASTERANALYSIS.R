@@ -91,6 +91,7 @@ x$tempo <- as.Date(as.yearqtr(x$tempo))
 ################################
 ## fazendo graficos          ###
 ## GRAFICOS DO DIA 08 DE JUNHO #
+## tentativa 1                 #
 ################################
 
 item1 <- x %>%
@@ -114,6 +115,21 @@ lalala <- x %>%
   mutate(taxadeinformalidade = (informaluf/ocupuf)*100) %>%
   ggplot(aes(tempo, informaluf), color = UF) +
   geom_line(color = UF)
+
+######################
+## tentativa 2      ##
+## sozinho em casa  ##
+######################
+
+item1 <- x %>%
+    mutate(informal = sum(informaluf),
+           ocup = sum(ocupuf),
+           taxadeinformalidade = (informaluf/ocupuf)*100)
+
+ggplot(data = item1, aes(x = tempo,
+                        y = taxadeinformalidade)) +
+    geom_line() +
+    geom_point()
 
 
 # tentando usar scatterplot #
