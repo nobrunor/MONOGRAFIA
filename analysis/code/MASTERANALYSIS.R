@@ -28,7 +28,7 @@ library(haven)
 library(ggplot2)
 library(hrbrthemes)
 library(dplyr)
-
+library(zoo)
 
 
 #####################
@@ -79,24 +79,54 @@ x <- rbind(x121, x122, x123, x124, x131, x132, x133, x134, x141, x142, x143, x14
            x161, x162, x163, x164, x171, x172, x173, x174, x181, x182, x183, x184, x191, x192, x193, x194,
            x201, x202, x203, x204, x211)
 
+x <- x %>%
+  mutate(time = paste0("0", year),
+         xx = substr(x$time, 1, 2),
+         zz = substr(x$time, 3, 6),
+         tempo = paste0 (zz, "-", xx))
 
-######################
-## fazendo graficos ##
-######################
+x$tempo <- as.Date(as.yearqtr(x$tempo))
+
+
+################################
+## fazendo graficos          ###
+## GRAFICOS DO DIA 08 DE JUNHO #
+################################
 
 item1 <- x %>%
   mutate(informal = sum(informaluf),
          ocup = sum(ocupuf)) %>%
   summarise()
   mutate(taxadeinformalidade = (informaluf/ocupuf)*100) %>%
-  ggplot(aes(year, taxadeinformalidade, colour = UF)) +
+  ggplot(aes(year, taxadeinformalidade, color = UF)) +
   geom_point()
 
-
-x %>% group_by(UF) %>%  mutate(taxadeinformalidade = (informaluf/ocupuf)*100) %>%
-  ggplot(aes(year, taxadeinformalidade, colour = UF)) +
+item2 <- x %>%
+  mutate(nc = sum(informalnc),
+          ocup = sum (ocupuf)) %>%
+  summarise()
+  mutate(taxadeinformalidadenc = (nc/ocupuf)*100) %>%
+  ggplot(aes(year,taxadeinformalidadenc, color = UF)) +
   geom_point()
 
+lalala <- x %>%
+  filter(UF == 33) %>%
+  mutate(taxadeinformalidade = (informaluf/ocupuf)*100) %>%
+  ggplot(aes(tempo, informaluf), color = UF) +
+  geom_line(color = UF)
+
+
+# tentando usar scatterplot #
+
+item1 %>%
+  tail(10) %>%
+  ggplot( aes(x=Trimestre, y=value)) +
+    geom_line( color="grey") +
+    geom_point(shape=21, color="black", fill="#69b3a2", size=6) +
+    theme_ipsum() +
+    ggtitle("Evolução da Taxa de Informalidade")
+
+# retomando o que fizemos em reunião #
 
 g <- ggplot(x)
 g + geom_point(aes(year, informaluf, colour = UF)) +
