@@ -99,7 +99,7 @@ data <- read_pnadc(microdata = lista_pnad, input_txt = chave_input)
 
 popuf <- data %>%
   select(UF, V1028, Trimestre, Ano) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(popuf = mean(aux))
 
@@ -113,7 +113,7 @@ write.csv(popuf, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/popuf", yr,
 pia <- data %>%
   select(UF, V1028, Trimestre, Ano, V2009) %>%
   filter(V2009 >= 14) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(piauf = mean(aux))
 
@@ -126,7 +126,7 @@ write.csv(pia, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/piauf", yr, "
 pea <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" | VD4002 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(peauf = mean(aux))
 
@@ -139,298 +139,343 @@ write.csv(pea, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/peauf", yr, "
 ocup <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupuf = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv"))
 
 ocupfaixaetaria1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
   filter(VD4002 == "1" & (V2009 >= 18 & V2009 <= 24)) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupfaixaetaria1 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupfaixaetaria1", yr, ".csv"))
 
 ocupfaixaetaria2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
   filter(VD4002 == "1" & (V2009 >= 25 & V2009 <= 29)) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupfaixaetaria2 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupfaixaetaria2", yr, ".csv"))
 
 ocupfaixaetaria3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
   filter(VD4002 == "1" & (V2009 >= 30 & V2009 <= 39)) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupfaixaetaria3 = mean(aux))
 
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupfaixaetaria3", yr, ".csv"))
 
 ocupfaixaetaria4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
   filter(VD4002 == "1" & (V2009 >= 40 & V2009 <= 49)) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupfaixaetaria4 = mean(aux))
 
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupfaixaetaria4", yr, ".csv"))
 
 ocupfaixaetaria5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
   filter(VD4002 == "1" & (V2009 >= 50 & V2009 <= 59)) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupfaixaetaria5 = mean(aux))
 
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupfaixaetaria5", yr, ".csv"))
 
 ocupfaixaetaria6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009) %>%
   filter(VD4002 == "1" & V2009 >= 60) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupfaixaetaria6 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupfaixaetaria6", yr, ".csv"))
 
 ocupsalario1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario1 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario1", yr, ".csv"))
 
 ocupsalario2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario2 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario2", yr, ".csv"))
 
 ocupsalario3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "3") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario3 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario3", yr, ".csv"))
 
 ocupsalario4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "4") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario4 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario4", yr, ".csv"))
 
 ocupsalario5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "5") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario5 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario5", yr, ".csv"))
 
 ocupsalario6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "6") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario6 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario6", yr, ".csv"))
 
 ocupsalario7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "7") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario7 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario7", yr, ".csv"))
 
 ocupsalario8 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311) %>%
   filter(VD4002 == "1" & V403311 == "8") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsalario8 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario8", yr, ".csv"))
 
 ocupeduc1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc1 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc1", yr, ".csv"))
+
 
 ocupeduc2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc2 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc2", yr, ".csv"))
+
 
 ocupeduc3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "3") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc3 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc3", yr, ".csv"))
+
 
 ocupeduc4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "4") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc4 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc4", yr, ".csv"))
+
 
 ocupeduc5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "5") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc5 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc5", yr, ".csv"))
+
 
 ocupeduc6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "6") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc6 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc6", yr, ".csv"))
+
 
 ocupeduc7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "7") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc7 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupeduc7", yr, ".csv"))
 
 ocupraca1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
   filter(VD4002 == "1" & V2010 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupraca1 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupraca1", yr, ".csv"))
 
 ocupraca2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
   filter(VD4002 == "1" & V2010 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupraca2 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupraca2", yr, ".csv"))
 
 ocupraca3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
   filter(VD4002 == "1" & V2010 == "3") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupraca3 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupraca3", yr, ".csv"))
 
 ocupraca4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
   filter(VD4002 == "1" & V2010 == "4") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupraca4 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupraca4", yr, ".csv"))
 
 ocupraca5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010) %>%
   filter(VD4002 == "1" & V2010 == "5") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupraca5 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupraca5", yr, ".csv"))
+
 
 ocupgenero1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2007) %>%
   filter(VD4002 == "1" & V2007 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupgenero1 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupgenero1", yr, ".csv"))
+
 
 ocupgenero2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2007) %>%
   filter(VD4002 == "1" & V2007 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupgenero2 = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupgenero2", yr, ".csv"))
+
 
 ocupurbana <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022) %>%
   filter(VD4002 == "1" & V1022 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupurbana = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupurbana", yr, ".csv"))
+
 
 ocuprural <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022) %>%
   filter(VD4002 == "1" & V1022 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocuprural = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocuprural", yr, ".csv"))
+
 
 ocupnorte <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & (UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17")) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupnorte = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupnorte", yr, ".csv"))
+
 
 ocupnordeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & (UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29")) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupnordeste = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupnordeste", yr, ".csv"))
+
 
 ocupsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & (UF == "31" | UF == "32" | UF == "33"| UF == "34"| UF == "35")) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsudeste = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsudeste", yr, ".csv"))
+
 
 ocupsul <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & (UF == "41" | UF == "42" | UF == "43")) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupsul = mean(aux))
+
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsul", yr, ".csv"))
+
 
 ocupcentrooeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "1" & (UF == "50" | UF == "51" | UF == "52"| UF == "53")) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupcentrooeste = mean(aux))
 
+write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupcentrooeste", yr, ".csv"))
 
 
-x <- merge(ocup, ocupfaixaetaria1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupfaixaetaria2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupfaixaetaria3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupfaixaetaria4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupfaixaetaria5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupfaixaetaria6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario7, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsalario8, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupeduc7, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupraca1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupraca2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupraca3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupraca4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupraca5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupgenero1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupgenero2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupurbana, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocuprural, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupnorte, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupnordeste, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsudeste, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupsul, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocupcentrooeste, by = c("UF", "Trimestre"), all = TRUE)
-x <- x %>% mutate(year = yr)
-
-write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".csv"))
 
 ########################
 # desocupados de cada estado
@@ -439,7 +484,7 @@ write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupuf", yr, ".
 desocup <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002) %>%
   filter(VD4002 == "2") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(desocupuf = mean(aux))
 
@@ -452,7 +497,7 @@ write.csv(desocup, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desocupuf
 desalent <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4005) %>%
   filter(VD4005 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(desalentuf = mean(aux))
 
@@ -465,7 +510,7 @@ write.csv(desalent, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/desalent
 #nemnem <- data %>%
   #select(UF, V1028, Trimestre, Ano, V2009, V3002, V4074, V4074A, VD4001, VD4002) %>%
   #filter(VD4002 == 2 | (VD4001 == 2 & V3002 == 2)) %>%
-  #group_by(UF, Trimestre) %>%
+  #group_by(Trimestre) %>%
   #mutate(aux = sum(V1028),
   #       aux2 = ifelse(.data$V4074 == 6)) %>%
   #summarise(nemnem = mean(aux),
@@ -483,149 +528,161 @@ formal <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012) %>%
   filter(VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1")) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaluf = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaluf", yr, ".csv"))  
 
 formaleduc1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "1" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc1", yr, ".csv"))
 
 formaleduc2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "2" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc2", yr, ".csv"))
 
 formaleduc3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "3" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc3 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc3", yr, ".csv"))
 
 formaleduc4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "4" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc4 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc4", yr, ".csv"))
 
 formaleduc5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "5" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc5 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc5", yr, ".csv"))
 
 formaleduc6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "6" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc6 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc6", yr, ".csv"))
 
 formaleduc7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
   filter(VD3004 == "7" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formaleduc7 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaleduc7", yr, ".csv"))
 
 formalsalario1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "1" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario1", yr, ".csv"))
 
 formalsalario2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "2" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario2", yr, ".csv"))  
 
 formalsalario3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "3" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario3 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario3", yr, ".csv"))
 
 formalsalario4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "4" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario4 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario4", yr, ".csv"))
 
 formalsalario5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "5" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario5 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario5", yr, ".csv"))
 
 formalsalario6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "6" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario6 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario6", yr, ".csv"))
 
 formalsalario7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "7" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario7 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario7", yr, ".csv"))
 
 formalsalario8 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, V403311) %>%
   filter(V403311 == "8" & (VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
         (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(formalsalario8 = mean(aux))
 
-
-x <- merge(formal, formaleduc1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formaleduc2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formaleduc3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formaleduc4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formaleduc5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formaleduc6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formaleduc7, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario7, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formalsalario8, by = c("UF", "Trimestre"), all = TRUE)
-x <- x %>% mutate(year = yr)
-
-write.csv(formal, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaluf", yr, ".csv"))
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formalsalario8", yr, ".csv"))
 
 
 ########################
@@ -636,341 +693,373 @@ informal <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaluf = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaluf", yr, ".csv"))
 
 informalfaixaetaria1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2009 >= 18 & V2009 <= 24) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalfaixaetaria1", yr, ".csv"))
 
 informalfaixaetaria2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2009 >= 25 & V2009 <= 29) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalfaixaetaria2", yr, ".csv"))
 
 informalfaixaetaria3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2009 >= 30 & V2009 <= 39) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria3 = mean(aux))
 
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalfaixaetaria3", yr, ".csv"))
 
 informalfaixaetaria4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2009 >= 40 & V2009 <= 49) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria4 = mean(aux))
 
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalfaixaetaria4", yr, ".csv"))
 
 informalfaixaetaria5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2009 >= 50 & V2009 <= 59) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria5 = mean(aux))
 
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalfaixaetaria5", yr, ".csv"))
 
 informalfaixaetaria6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2009, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2009 >= 60) & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalfaixaetaria6 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalfaixaetaria6", yr, ".csv"))
 
 informalsalario1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario1", yr, ".csv"))
 
 
 informalsalario2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario2", yr, ".csv"))
 
 
 informalsalario3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "3") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario3 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario3", yr, ".csv"))
+
 
 informalsalario4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "4") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario4 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario4", yr, ".csv"))
+
 
 informalsalario5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "5") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario5 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario5", yr, ".csv"))
 
 
 informalsalario6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "6") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario6 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario6", yr, ".csv"))
 
 
 informalsalario7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "7") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario7 = mean(aux))
 
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario7", yr, ".csv"))
 
 informalsalario8 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V403311, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V403311 == "8") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsalario8 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsalario8", yr, ".csv"))
 
 informaleduc1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc1", yr, ".csv"))
 
 informaleduc2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc2", yr, ".csv"))
 
 informaleduc3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "3") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc3 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc3", yr, ".csv"))
 
 informaleduc4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "4") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc4 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc4", yr, ".csv"))
 
 informaleduc5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "5") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc5 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc5", yr, ".csv"))
 
 informaleduc6 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "6") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc6 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc6", yr, ".csv"))
 
 informaleduc7 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (VD3004 == "7") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informaleduc7 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaleduc7", yr, ".csv"))
 
 informalraca1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2010 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalraca1", yr, ".csv"))
 
 informalraca2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2010 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalraca2", yr, ".csv"))
 
 informalraca3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2010 == "3") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca3 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalraca3", yr, ".csv"))
 
 informalraca4 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2010 == "4") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca4 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalraca4", yr, ".csv"))
 
 informalraca5 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2010, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2010 == "5") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalraca5 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalraca5", yr, ".csv"))
 
 informalgenero1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2007, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2007 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalgenero1 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalgenero1", yr, ".csv"))
 
 informalgenero2 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V2007, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V2007 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalgenero2 = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalgenero2", yr, ".csv"))
 
 informalurbana <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V1022 == "1") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(inforurbana = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalurbana", yr, ".csv"))  
 
 informalrural <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (V1022 == "2") & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalrural = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalrural", yr, ".csv"))
 
 informalnorte <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (UF == "11" | UF == "12" | UF == "13"| UF == "14"| UF == "15"| UF == "16"| UF == "17") &
            (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalnorte = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalnorte", yr, ".csv"))
 
 informalnordeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (UF == "21" | UF == "22" | UF == "23"| UF == "24"| UF == "25"| UF == "26"| UF == "27"| UF == "28"| UF == "29") &
            (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalnordeste = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalnordeste", yr, ".csv"))
 
 informalsudeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (UF == "31" | UF == "32" | UF == "33"| UF == "35") &
            (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsudeste = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsudeste", yr, ".csv"))
 
 informalsul <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (UF == "41" | UF == "42" | UF == "43") &
            (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalsul = mean(aux))
+
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalsul", yr, ".csv"))
 
 informalcentrooeste <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & (UF == "50" | UF == "51" | UF == "52"| UF == "53") &
            (VD4009 == "02" | VD4009 == "04" | VD4009 == "06" | VD4009 == "10" |
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalcentrooeste = mean(aux))
 
-x <- merge(informal, informalfaixaetaria1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalfaixaetaria2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalfaixaetaria3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalfaixaetaria4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalfaixaetaria5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalfaixaetaria6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario7, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsalario8, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc6, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informaleduc7, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalraca1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalraca2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalraca3, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalraca4, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalraca5, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalgenero1, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalgenero2, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalurbana, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalrural, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalnorte, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalnordeste, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsudeste, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalsul, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalcentrooeste, by = c("UF", "Trimestre"), all = TRUE)
-x <- x %>% mutate(year = yr)
+write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalcentrooeste", yr, ".csv"))
 
-write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaluf", yr, ".csv"))
 
 ##############################################
 # informais não contribuintes de cada estado #
@@ -979,7 +1068,7 @@ write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaluf", yr
 informalnc <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
   filter(VD4002 == "1" & ((VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(informalncuf = mean(aux))
 
@@ -992,7 +1081,7 @@ write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/inform
 cart <- data %>%
   select(UF, V1028, Trimestre, Ano, V4029) %>%
   filter(V4029 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(cartuf = mean(aux))
 
@@ -1005,7 +1094,7 @@ write.csv(cart, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/cartuf", yr,
 inss <- data %>%
   select(UF, V1028, Trimestre, Ano, V4032) %>%
   filter(V4032 == "1") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(inssuf = mean(aux))
 
@@ -1020,7 +1109,7 @@ write.csv(inss, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/inssuf", yr,
 priv <- data %>%
   select(UF, V1028, Trimestre, Ano, V4012) %>%
   filter(V4012 == "3") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(privuf = mean(aux))
 
@@ -1033,7 +1122,7 @@ write.csv(priv, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/privuf", yr,
 publ <- data %>%
   select(UF, V1028, Trimestre, Ano, V4012) %>%
   filter(V4012 == "4") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(publuf = mean(aux))
 
@@ -1046,7 +1135,7 @@ write.csv(publ, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/publuf", yr,
 prim <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4010) %>%
   filter(VD4010 == "01") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(primuf = mean(aux))
 
@@ -1060,7 +1149,7 @@ write.csv(prim, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/primuf", yr,
 sec <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4010) %>%
   filter(VD4010 == "02" | VD4010 == "03") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(secuf = mean(aux))
 
@@ -1074,7 +1163,7 @@ write.csv(sec, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/secuf", yr, "
 terc <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4010) %>%
   filter(VD4010 == "04" | VD4010 == "05" | VD4010 == "06" | VD4010 == "07" | VD4010 == "08" | VD4010 == "09") %>%
-  group_by(UF, Trimestre) %>%
+  group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(tercuf = mean(aux))
 
@@ -1085,25 +1174,108 @@ write.csv(terc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/tercuf", yr,
 ### juntando as bases de dados ####
 ###################################
 
-x <- merge(pea, pia, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, desocup, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, cart, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, desalent, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, formal, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informal, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, informalnc, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, inss, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, ocup, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, popuf, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, prim, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, priv, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, publ, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, sec, by = c("UF", "Trimestre"), all = TRUE)
-x <- merge(x, terc, by = c("UF", "Trimestre"), all = TRUE)
+x <- merge(pea, pia, by = c("Trimestre"), all = TRUE)
+x <- merge(x, desocup, by = c("Trimestre"), all = TRUE)
+x <- merge(x, cart, by = c("Trimestre"), all = TRUE)
+x <- merge(x, desalent, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocup, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupfaixaetaria6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario7, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsalario8, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupeduc7, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupraca1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupraca2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupraca3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupraca4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupraca5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupgenero1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupgenero2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupurbana, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocuprural, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupnorte, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupnordeste, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsudeste, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupsul, by = c("Trimestre"), all = TRUE)
+x <- merge(x, ocupcentrooeste, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formal, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formaleduc7, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario7, by = c("Trimestre"), all = TRUE)
+x <- merge(x, formalsalario8, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informal, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalfaixaetaria6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario7, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsalario8, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc6, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaleduc7, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalraca1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalraca2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalraca3, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalraca4, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalraca5, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalgenero1, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalgenero2, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalurbana, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalrural, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalnorte, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalnordeste, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsudeste, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalsul, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalcentrooeste, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informalnc, by = c("Trimestre"), all = TRUE)
+x <- merge(x, inss, by = c("Trimestre"), all = TRUE)
+x <- merge(x, popuf, by = c("Trimestre"), all = TRUE)
+x <- merge(x, prim, by = c("Trimestre"), all = TRUE)
+x <- merge(x, priv, by = c("Trimestre"), all = TRUE)
+x <- merge(x, publ, by = c("Trimestre"), all = TRUE)
+x <- merge(x, sec, by = c("Trimestre"), all = TRUE)
+x <- merge(x, terc, by = c("Trimestre"), all = TRUE)
 x <- x %>% mutate(year = yr)
 
 write.csv(x, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/output/pnadc", yr, ".csv"))
 }
-
-
 
