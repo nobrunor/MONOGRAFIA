@@ -878,7 +878,7 @@ informalurbana <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(UF, Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(inforurbana = mean(aux))
+  summarise(informalurbana = mean(aux))
 
 informalrural <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, V1022, VD4009, VD4012) %>%

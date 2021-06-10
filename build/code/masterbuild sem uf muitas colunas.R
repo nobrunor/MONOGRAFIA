@@ -991,7 +991,7 @@ informalurbana <- data %>%
            (VD4009 == "08" & VD4012 == "2") | (VD4009 == "09" & VD4012 == "2"))) %>%
   group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
-  summarise(inforurbana = mean(aux))
+  summarise(informalurbana = mean(aux))
 
 write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalurbana", yr, ".csv"))  
 
