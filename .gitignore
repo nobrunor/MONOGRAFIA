@@ -95,3 +95,6 @@ build/input/PNADC_012021.txt
 build/code/masterbuildsalario.R
 build/code/scatterplot
 GGPLOT VISUALIZAÇAO DE DADOS.pdf
+build/output/.Rhistory
+analysis/graficos/Evolução da taxa de informalidade.png
+analysis/output/Evolução da Taxa de Informalidade.png

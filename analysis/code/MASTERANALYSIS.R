@@ -80,6 +80,9 @@ x <- rbind(x121, x122, x123, x124, x131, x132, x133, x134, x141, x142, x143, x14
            x201, x202, x203, x204, x211)
 
 x <- x %>%
+  mutate(time = paste0("0", year))
+
+x <- x %>%
   mutate(time = paste0("0", year),
          xx = substr(x$time, 1, 2),
          zz = substr(x$time, 3, 6),
@@ -130,6 +133,32 @@ ggplot(data = item1, aes(x = tempo,
                         y = taxadeinformalidade)) +
     geom_line() +
     geom_point()
+
+
+##############################
+## tentativa 3 (deu certo)  ##
+## sozinho em casa          ##
+## tx informalidade         ##
+##############################
+
+item1 <- x %>%
+    mutate(informal = sum(informaluf),
+           ocup = sum(ocupuf),
+           taxadeinformalidade = (informaluf/ocupuf)*100)
+
+ggplot(data = item1, aes(tempo,
+                          taxadeinformalidade)) +
+     geom_line(color = "grey") +
+     geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 2) +
+     theme_ipsum() +
+     labs(x = "Ano",
+          y = "Taxa de Informalidade",
+          title = "Evolução da Taxa de Informalidade")
+
+item1 <- x %>%
+    mutate(informalnaocontribuinte = sum(informalncuf),
+           taxadeinformalidadenc = (informalncuf/ocupuf)*100)
+
 
 
 # tentando usar scatterplot #
