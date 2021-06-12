@@ -333,21 +333,22 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadenorte)) +
 
 ################################
 ##  informalidade por setor   ##
+##     não está rodando       ##
 ################################
 
 item1 <- x %>%
-         mutate(taxadeinformalidadeprim = (informalprim/prim)*100,
-                taxadeinformalidadesec = (informalsec/sec)*100,
-                taxadeinformalidadeterc = (informalterc/terc)*100,
-                taxadeinformalidadesecsemconstr = (informalsecsemconstr/secsemconstr)*100,
-                taxadeinformalidadeterceservicos = (informaltercservicos/tercservicos)*100)
+         mutate(infprim = (informalprim/primuf)*100,
+                infsec = (informalsec/secuf)*100,
+                infterc = (informalterc/tercuf)*100,
+                infsecsemconstr = (informalsecsemconstr/secsemconstr)*100,
+                inftercservicos = (informaltercservicos/tercservicos)*100)
 
-ggplot(item1, aes(x = tempo, y = taxadeinformalidadeprim)) +
+ggplot(item1, aes(x = tempo, y = infprim)) +
     geom_line(aes(col = "Setor Primário")) +
-    geom_line(aes(y = taxadeinformalidadesec, col = "Setor Secundário")) +
-    geom_line(aes(y = taxadeinformalidadeterc, col = "Setor Terciário")) +
-    geom_line(aes(y = taxadeinformalidadesecsemconstr, col = "Setor Secundário (Exceto Construção)")) +
-    geom_line(aes(y = taxadeinformalidadeterceservicos, col = "Setor Terciário (Serviços)")) +
+    geom_line(aes(y = infsec, col = "Setor Secundário")) +
+    geom_line(aes(y = infterc, col = "Setor Terciário")) +
+    geom_line(aes(y = infsecsemconstr, col = "Setor Secundário (Exceto Construção)")) +
+    geom_line(aes(y = inftercservicos, col = "Setor Terciário (Serviços)")) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
