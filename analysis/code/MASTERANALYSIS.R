@@ -162,20 +162,20 @@ ggplot(data = item1, aes(tempo,
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidade)) +
     geom_line(aes(col = "Taxa de Informalidade")) +
-    geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos Não Contribuintes")) +
+    geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos N? Contribuintes")) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Informalidade X Informalidade Não Contribuintes") +
-    theme(legend.position = 'top')
+         title = "Informalidade X Informalidade N? Contribuintes") +
+    theme(legend.position = 'bottom')
 
 ##############################
 ## informalidade por gênero ##
 ##############################
 
 item1 <- x %>%
-         mutate(taxadeinformalidadehomem = (informalgenero1/ocupuf)*100,
-                taxadeinformalidademulher = (informalgenero2/ocupuf)*100)
+         mutate(taxadeinformalidadehomem = (informalgenero1/ocupgenero1)*100,
+                taxadeinformalidademulher = (informalgenero2/ocupgenero2)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidadehomem)) +
     geom_line(aes(col="Homens")) +
@@ -183,20 +183,20 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadehomem)) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Evolução da Informalidade por Gênero") +
-    theme(legend.position = 'top')
+         title = "Evolu?o da Informalidade por G?ero") +
+    theme(legend.position = 'bottom')
 
 ####################################
 ## informalidade por faixa etária ##
 ####################################
 
 item1 <- x %>%
-         mutate(taxadeinformalidadeFE1 = (informalfaixaetaria1/ocupuf)*100,
-                taxadeinformalidadeFE2 = (informalfaixaetaria2/ocupuf)*100,
-                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupuf)*100,
-                taxadeinformalidadeFE4 = (informalfaixaetaria4/ocupuf)*100,
-                taxadeinformalidadeFE5 = (informalfaixaetaria5/ocupuf)*100,
-                taxadeinformalidadeFE6 = (informalfaixaetaria6/ocupuf)*100)
+         mutate(taxadeinformalidadeFE1 = (informalfaixaetaria1/ocupfaixaetaria1)*100,
+                taxadeinformalidadeFE2 = (informalfaixaetaria2/ocupfaixaetaria2)*100,
+                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupfaixaetaria3)*100,
+                taxadeinformalidadeFE4 = (informalfaixaetaria4/ocupfaixaetaria4)*100,
+                taxadeinformalidadeFE5 = (informalfaixaetaria5/ocupfaixaetaria5)*100,
+                taxadeinformalidadeFE6 = (informalfaixaetaria6/ocupfaixaetaria6)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidadeFE1)) +
     geom_line(aes(col = "18-24 anos")) +
@@ -208,8 +208,8 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadeFE1)) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Evolução da Informalidade por Idade") +
-    theme(legend.position = 'top')
+         title = "Evolu?o da Informalidade por Idade") +
+    theme(legend.position = 'bottom')
 
 #############################
 ## informalidade por renda ##
@@ -238,45 +238,45 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidaderenda1)) +
     labs(x = "Ano",
          y = "Em %",
          title = "Evolução da Informalidade por Renda") +
-    theme(legend.position = 'top')
+    theme(legend.position = 'bottom')
 
 ######################################
 ##  informalidade por escolaridade  ##
 ######################################
 
 item1 <- x %>%
-         mutate(taxadeinformalidadeeduc1 = (informaleduc1/ocupuf)*100,
-                taxadeinformalidadeeduc2 = (informaleduc2/ocupuf)*100,
-                taxadeinformalidadeeduc3 = (informaleduc3/ocupuf)*100,
-                taxadeinformalidadeeduc4 = (informaleduc4/ocupuf)*100,
-                taxadeinformalidadeeduc5 = (informaleduc5/ocupuf)*100,
-                taxadeinformalidadeeduc6 = (informaleduc6/ocupuf)*100,
-                taxadeinformalidadeeduc7 = (informaleduc7/ocupuf)*100)
+         mutate(taxadeinformalidadeeduc1 = (informaleduc1/ocupeduc1)*100,
+                taxadeinformalidadeeduc2 = (informaleduc2/ocupeduc2)*100,
+                taxadeinformalidadeeduc3 = (informaleduc3/ocupeduc3)*100,
+                taxadeinformalidadeeduc4 = (informaleduc4/ocupeduc4)*100,
+                taxadeinformalidadeeduc5 = (informaleduc5/ocupeduc5)*100,
+                taxadeinformalidadeeduc6 = (informaleduc6/ocupeduc6)*100,
+                taxadeinformalidadeeduc7 = (informaleduc7/ocupeduc7)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidadeeduc1)) +
     geom_line(aes(col = "Sem instrução e menos de 1 ano de estudo")) +
-    geom_line(aes(y = taxadeinformalidadeeduc2, col = "Fundamental incompleto ou equivalente")) +
-    geom_line(aes(y = taxadeinformalidadeeduc3, col = "Fundamental completo ou equivalente")) +
-    geom_line(aes(y = taxadeinformalidadeeduc4, col = "Médio incompleto ou equivalente")) +
-    geom_line(aes(y = taxadeinformalidadeeduc5, col = "Médio completo ou equivalente")) +
-    geom_line(aes(y = taxadeinformalidadeeduc6, col = "Superior incompleto ou equivalente")) +
+    geom_line(aes(y = taxadeinformalidadeeduc2, col = "Fundamental incompleto")) +
+    geom_line(aes(y = taxadeinformalidadeeduc3, col = "Fundamental completo")) +
+    geom_line(aes(y = taxadeinformalidadeeduc4, col = "Médio incompleto")) +
+    geom_line(aes(y = taxadeinformalidadeeduc5, col = "Médio completo")) +
+    geom_line(aes(y = taxadeinformalidadeeduc6, col = "Superior incompleto")) +
     geom_line(aes(y = taxadeinformalidadeeduc7, col = "Superior completo")) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
          title = "Evolução da Informalidade por Escolaridade") +
-    theme(legend.position = 'top')
+    theme(legend.position = 'bottom')
 
 ##############################
 ##  informalidade por raca  ##
 ##############################
 
 item1 <- x %>%
-         mutate(taxadeinformalidaderaca1 = (informalraca1/ocupuf)*100,
-                taxadeinformalidaderaca2 = (informalraca2/ocupuf)*100,
-                taxadeinformalidaderaca3 = (informalraca3/ocupuf)*100,
-                taxadeinformalidaderaca4 = (informalraca4/ocupuf)*100,
-                taxadeinformalidaderaca5 = (informalraca5/ocupuf)*100)
+         mutate(taxadeinformalidaderaca1 = (informalraca1/ocupraca1)*100,
+                taxadeinformalidaderaca2 = (informalraca2/ocupraca2)*100,
+                taxadeinformalidaderaca3 = (informalraca3/ocupraca3)*100,
+                taxadeinformalidaderaca4 = (informalraca4/ocupraca4)*100,
+                taxadeinformalidaderaca5 = (informalraca5/ocupraca5)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidaderaca1)) +
     geom_line(aes(col = "Branca")) +
@@ -288,35 +288,35 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidaderaca1)) +
     labs(x = "Ano",
          y = "Em %",
          title = "Evolução da Informalidade por Cor") +
-    theme(legend.position = 'top')
+    theme(legend.position = 'bottom')
 
 ###########################################
 ##  informalidade por tipo de domicilio  ##
 ###########################################
 
 item1 <- x %>%
-         mutate(taxadeinformalidadeurbana = (informalurbana/ocupuf)*100,
-                taxadeinformalidaderural = (informalrural/ocupuf)*100)
+         mutate(taxadeinformalidadeurbana = (informalurbana/ocupurbana)*100,
+                taxadeinformalidaderural = (informalrural/ocuprural)*100)
 
-ggplot(item1, aes(x = tempo, y = taxadeinformalidadeurbana1)) +
+ggplot(item1, aes(x = tempo, y = taxadeinformalidadeurbana)) +
     geom_line(aes(col = "Urbano")) +
     geom_line(aes(y = taxadeinformalidaderural, col = "Rural")) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
          title = "Evolução da Informalidade por Tipo de Domicílio") +
-    theme(legend.position = 'top')
+    theme(legend.position = 'bottom')
 
 ################################
 ##  informalidade por região  ##
 ################################
 
 item1 <- x %>%
-         mutate(taxadeinformalidadenorte = (informalnorte/ocupuf)*100,
-                taxadeinformalidadenordeste = (informalnordeste/ocupuf)*100,
-                taxadeinformalidadesudeste = (informalsudeste/ocupuf)*100,
-                taxadeinformalidadesul = (informalsul/ocupuf)*100,
-                taxadeinformalidadecentrooeste = (informalcentrooeste/ocupuf)*100)
+         mutate(taxadeinformalidadenorte = (informalnorte/ocupnorte)*100,
+                taxadeinformalidadenordeste = (informalnordeste/ocupnordeste)*100,
+                taxadeinformalidadesudeste = (informalsudeste/ocupsudeste)*100,
+                taxadeinformalidadesul = (informalsul/ocupsul)*100,
+                taxadeinformalidadecentrooeste = (informalcentrooeste/ocupcentrooeste)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidadenorte)) +
     geom_line(aes(col = "Norte")) +
@@ -328,7 +328,31 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadenorte)) +
     labs(x = "Ano",
          y = "Em %",
          title = "Evolução da Informalidade por Região") +
-    theme(legend.position = 'top')
+    theme(legend.position = 'bottom')
+
+
+################################
+##  informalidade por setor   ##
+################################
+
+item1 <- x %>%
+         mutate(taxadeinformalidadeprim = (informalprim/prim)*100,
+                taxadeinformalidadesec = (informalsec/sec)*100,
+                taxadeinformalidadeterc = (informalterc/terc)*100,
+                taxadeinformalidadesecsemconstr = (informalsecsemconstr/secsemconstr)*100,
+                taxadeinformalidadeterceservicos = (informaltercservicos/tercservicos)*100)
+
+ggplot(item1, aes(x = tempo, y = taxadeinformalidadeprim)) +
+    geom_line(aes(col = "Setor Primário")) +
+    geom_line(aes(y = taxadeinformalidadesec, col = "Setor Secundário")) +
+    geom_line(aes(y = taxadeinformalidadeterc, col = "Setor Terciário")) +
+    geom_line(aes(y = taxadeinformalidadesecsemconstr, col = "Setor Secundário (Exceto Construção)")) +
+    geom_line(aes(y = taxadeinformalidadeterceservicos, col = "Setor Terciário (Serviços)")) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Em %",
+         title = "Evolução da Informalidade por Setor") +
+    theme(legend.position = 'bottom')
 
 
 
