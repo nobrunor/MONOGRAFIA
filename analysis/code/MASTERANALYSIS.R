@@ -162,11 +162,11 @@ ggplot(data = item1, aes(tempo,
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidade)) +
     geom_line(aes(col = "Taxa de Informalidade")) +
-    geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos N? Contribuintes")) +
+    geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos Não Contribuintes")) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Informalidade X Informalidade N? Contribuintes") +
+         title = "Informalidade X Informalidade Não Contribuintes") +
     theme(legend.position = 'bottom')
 
 ##############################
@@ -183,7 +183,7 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadehomem)) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Evolu?o da Informalidade por G?ero") +
+         title = "Evolução da Informalidade por G?ero") +
     theme(legend.position = 'bottom')
 
 ####################################
@@ -208,7 +208,7 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadeFE1)) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Evolu?o da Informalidade por Idade") +
+         title = "Evolução da Informalidade por Idade") +
     theme(legend.position = 'bottom')
 
 #############################
@@ -356,6 +356,76 @@ ggplot(item1, aes(x = tempo, y = infprim)) +
     theme(legend.position = 'bottom')
 
 
+###############################
+##    taxa de desocupação    ##
+###############################
+
+item1 <- x %>%
+         mutate(taxadesocup = (desocupuf/peauf)*100)
+
+ggplot(data = item1, aes(tempo,
+                          taxadesocup)) +
+     geom_line(color = "grey") +
+     geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 2) +
+     theme_bw() +
+     labs(x = "Ano",
+          y = "Em %",
+          title = "Evolução da Taxa de Desocupação")
+
+############################
+##    taxa de ocupação    ##
+############################
+
+item1 <- x %>%
+         mutate(taxaocup = (ocupuf/peauf)*100)
+
+ggplot(data = item1, aes(tempo,
+                          taxaocup)) +
+     geom_line(color = "grey") +
+     geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 2) +
+     theme_bw() +
+     labs(x = "Ano",
+          y = "Em %",
+          title = "Evolução da Taxa de Ocupação")
+
+
+###################################
+##    evolução da formalidade    ##
+###################################
+
+item1 <- x %>%
+    mutate(formal = sum(formaluf),
+           ocup = sum(ocupuf),
+           taxadeformalidade = (formaluf/ocupuf)*100)
+
+ggplot(data = item1, aes(tempo,
+                          taxadeformalidade)) +
+     geom_line(color = "grey") +
+     geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 2) +
+     theme_bw() +
+     labs(x = "Ano",
+          y = "Em %",
+          title = "Evolução da Taxa de Formalidade")
+
+
+
+####################################################
+##   histograma informalidade por faixa etária    ##
+##               faz sentido?                     ##
+####################################################
+
+item1 <- x %>%
+         mutate(taxadeinformalidadeFE1 = (informalfaixaetaria1/ocupfaixaetaria1)*100,
+                taxadeinformalidadeFE2 = (informalfaixaetaria2/ocupfaixaetaria2)*100,
+                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupfaixaetaria3)*100,
+                taxadeinformalidadeFE4 = (informalfaixaetaria4/ocupfaixaetaria4)*100,
+                taxadeinformalidadeFE5 = (informalfaixaetaria5/ocupfaixaetaria5)*100,
+                taxadeinformalidadeFE6 = (informalfaixaetaria6/ocupfaixaetaria6)*100)
+
+ggplot(data = item1, aes(x = taxadeinformalidadeFE1)) +
+  geom_histogram() +
+  ggtitle('Faixa Etária 1')+
+  facet_wrap(~tempo)
 
 
 # tentando usar scatterplot #
