@@ -150,6 +150,7 @@ ggplot(data = item1, aes(tempo,
                           taxadeinformalidade)) +
      geom_line(color = "grey") +
      geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 2) +
+     geom_vline(xintercept = item1$tempo[33], linetype = 4) +
      theme_bw() +
      labs(x = "Ano",
           y = "Em %",
@@ -216,14 +217,14 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadeFE1)) +
 #############################
 
 item1 <- x %>%
-         mutate(taxadeinformalidaderenda1 = (informalsalario1/ocupuf)*100,
-                taxadeinformalidaderenda2 = (informalsalario2/ocupuf)*100,
-                taxadeinformalidaderenda3 = (informalsalario3/ocupuf)*100,
-                taxadeinformalidaderenda4 = (informalsalario4/ocupuf)*100,
-                taxadeinformalidaderenda5 = (informalsalario5/ocupuf)*100,
-                taxadeinformalidaderenda6 = (informalsalario6/ocupuf)*100,
-                taxadeinformalidaderenda7 = (informalsalario7/ocupuf)*100,
-                taxadeinformalidaderenda8 = (informalsalario8/ocupuf)*100)
+         mutate(taxadeinformalidaderenda1 = (informalsalario1/ocupsalario1)*100,
+                taxadeinformalidaderenda2 = (informalsalario2/ocupsalario2)*100,
+                taxadeinformalidaderenda3 = (informalsalario3/ocupsalario3)*100,
+                taxadeinformalidaderenda4 = (informalsalario4/ocupsalario4)*100,
+                taxadeinformalidaderenda5 = (informalsalario5/ocupsalario5)*100,
+                taxadeinformalidaderenda6 = (informalsalario6/ocupsalario6)*100,
+                taxadeinformalidaderenda7 = (informalsalario7/ocupsalario7)*100,
+                taxadeinformalidaderenda8 = (informalsalario8/ocupsalario8)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidaderenda1)) +
     geom_line(aes(col = "até 0,5 SM")) +
@@ -407,6 +408,62 @@ ggplot(data = item1, aes(tempo,
           y = "Em %",
           title = "Evolução da Taxa de Formalidade")
 
+
+######################################
+##  formalidade por escolaridade  ##
+######################################
+
+item1 <- x %>%
+         mutate(taxadeformalidadeeduc1 = (formaleduc1/ocupeduc1)*100,
+                taxadeformalidadeeduc2 = (formaleduc2/ocupeduc2)*100,
+                taxadeformalidadeeduc3 = (formaleduc3/ocupeduc3)*100,
+                taxadeformalidadeeduc4 = (formaleduc4/ocupeduc4)*100,
+                taxadeformalidadeeduc5 = (formaleduc5/ocupeduc5)*100,
+                taxadeformalidadeeduc6 = (formaleduc6/ocupeduc6)*100,
+                taxadeformalidadeeduc7 = (formaleduc7/ocupeduc7)*100)
+
+ggplot(item1, aes(x = tempo, y = taxadeformalidadeeduc1)) +
+    geom_line(aes(col = "Sem instrução e menos de 1 ano de estudo")) +
+    geom_line(aes(y = taxadeformalidadeeduc2, col = "Fundamental incompleto")) +
+    geom_line(aes(y = taxadeformalidadeeduc3, col = "Fundamental completo")) +
+    geom_line(aes(y = taxadeformalidadeeduc4, col = "Médio incompleto")) +
+    geom_line(aes(y = taxadeformalidadeeduc5, col = "Médio completo")) +
+    geom_line(aes(y = taxadeformalidadeeduc6, col = "Superior incompleto")) +
+    geom_line(aes(y = taxadeformalidadeeduc7, col = "Superior completo")) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Em %",
+         title = "Evolução da Formalidade por Escolaridade") +
+    theme(legend.position = 'bottom')
+
+#############################
+## informalidade por renda ##
+#############################
+
+item1 <- x %>%
+         mutate(taxadeformalidaderenda1 = (formalsalario1/ocupsalario1)*100,
+                taxadeformalidaderenda2 = (formalsalario2/ocupsalario2)*100,
+                taxadeformalidaderenda3 = (formalsalario3/ocupsalario3)*100,
+                taxadeformalidaderenda4 = (formalsalario4/ocupsalario4)*100,
+                taxadeformalidaderenda5 = (formalsalario5/ocupsalario5)*100,
+                taxadeformalidaderenda6 = (formalsalario6/ocupsalario6)*100,
+                taxadeformalidaderenda7 = (formalsalario7/ocupsalario7)*100,
+                taxadeformalidaderenda8 = (formalsalario8/ocupsalario8)*100)
+
+ggplot(item1, aes(x = tempo, y = taxadeformalidaderenda1)) +
+    geom_line(aes(col = "até 0,5 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda2, col = "0,5 - 1 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda3, col = "1 - 2 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda4, col = "2 - 3 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda5, col = "3 - 5 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda6, col = "5 - 10 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda7, col = "10 - 20 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda8, col = "Mais de 20 SM")) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Em %",
+         title = "Evolução da Formalidade por Renda") +
+    theme(legend.position = 'bottom')
 
 
 ####################################################

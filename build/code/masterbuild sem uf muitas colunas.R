@@ -271,6 +271,7 @@ ocupsalario8 <- data %>%
 
 write.csv(ocupsalario8, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupsalario8", yr, ".csv"))
 
+
 ocupeduc1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
   filter(VD4002 == "1" & VD3004 == "1") %>%
@@ -533,6 +534,18 @@ formal <- data %>%
   summarise(formaluf = mean(aux))
 
 write.csv(formal, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/formaluf", yr, ".csv"))  
+
+rendmedioformal <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012, VD4019) %>%
+  filter(VD4009 == "01" | VD4009 == "03" | VD4009 == "05" | VD4009 == "07" |
+        (VD4009 == "08" & VD4012 == "1") | (VD4009 == "09" & VD4012 == "1")) %>%
+  group_by(Trimestre) %>%
+  mutate(aux = sum(V1028),
+         aux2 = sum(VD4019 * V1028),
+         aux3 = aux2/aux) %>%
+  summarise(rendmedioformal = mean(aux3))
+
+write.csv(rendmedioformal, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/rendmedioformal", yr, ".csv"))
 
 formaleduc1 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4009, VD4012, VD3004) %>%
