@@ -143,8 +143,10 @@ item1 <- x %>%
     mutate(informal = sum(informaluf),
            ocup = sum(ocupuf),
            informalnc = sum(informalncuf),
+           informalscart = sum(informalscartuf),
            taxadeinformalidade = (informaluf/ocupuf)*100,
-           taxadeinformalidadenc =(informalncuf/ocupuf)*100)
+           taxadeinformalidadenc = (informalncuf/ocupuf)*100,
+           taxadeinformalidadescart = (informalscartuf/ocupuf)*100)
 
 ggplot(data = item1, aes(tempo,
                           taxadeinformalidade)) +
@@ -157,17 +159,18 @@ ggplot(data = item1, aes(tempo,
           title = "Evolução da Taxa de Informalidade")
 
 
-#################
-## inf x infnc ##
-#################
+############################
+## inf x infnc x infscart ##
+############################
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidade)) +
     geom_line(aes(col = "Taxa de Informalidade")) +
     geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos Não Contribuintes")) +
+    geom_line(aes(y = taxadeinformalidadescart, col = "Taxa de Informalidade dos Sem Carteira Assinada")) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Informalidade X Informalidade Não Contribuintes") +
+         title = "Decomposição da Informalidade") +
     theme(legend.position = 'bottom')
 
 ##############################

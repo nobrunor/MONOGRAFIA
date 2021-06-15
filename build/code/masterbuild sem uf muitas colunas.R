@@ -1144,6 +1144,20 @@ informalnc <- data %>%
 
 write.csv(informalnc, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalncuf", yr, ".csv"))
 
+###################################
+# informais sem carteira assinada #
+###################################
+
+informalscart <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
+  filter(VD4002 == "1" & (VD4009 == "02" | VD4009 == "04" | VD4009 == "06")) %>%
+  group_by(Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(informalscart = mean(aux))
+
+write.csv(informalscart, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalscartuf", yr, ".csv"))
+
+
 ########################
 # carteira assinada de cada estado
 ########################
