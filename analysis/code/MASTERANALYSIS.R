@@ -29,6 +29,7 @@ library(ggplot2)
 library(hrbrthemes)
 library(dplyr)
 library(zoo)
+library(scales)
 
 
 #####################
@@ -436,6 +437,53 @@ ggplot(item1, aes(x = tempo, y = taxadeformalidaderenda1)) +
          y = "Em %",
          title = "Evolução da Formalidade por Renda") +
     theme(legend.position = 'bottom')
+
+
+
+################################
+##     ocupados em barra      ##
+################################
+
+
+transf_eixo <- number_format(scale = 1e-6, accuracy = .1, decimal.mark = ",")
+
+
+ggplot(item1) +
+    aes(x = tempo, weight = ocupuf) +
+    geom_bar(fill = "#112446") +
+    scale_y_continuous(labels = transf_eixo) +
+    geom_vline(xintercept = item1$tempo[33], linetype = 8) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Ocupados (em milhões)")
+
+################################
+##    informais em barra      ##
+################################
+
+ggplot(item1) +
+    aes(x = tempo, weight = informaluf) +
+    geom_bar(fill = "#112446") +
+    scale_y_continuous(labels = transf_eixo) +
+    geom_vline(xintercept = item1$tempo[33], linetype = 8) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Informais (em milhões)")
+
+
+#################################
+##    desocupados em barra     ##
+#################################
+
+ggplot(item1) +
+    aes(x = tempo, weight = desocupuf) +
+    geom_bar(fill = "#112446") +
+    scale_y_continuous(labels = transf_eixo) +
+    geom_vline(xintercept = item1$tempo[33], linetype = 8) +
+    geom_vline(xintercept = item1$tempo[37], linetype = 8) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Desocupados (em milhões)")
 
 
 ####################################################
