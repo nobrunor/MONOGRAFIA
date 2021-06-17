@@ -375,7 +375,7 @@ ggplot(data = item1, aes(tempo,
 
 
 ######################################
-##   formalidade por escolaridade   ##
+##  formalidade por escolaridade  ##
 ######################################
 
 item1 <- x %>%
