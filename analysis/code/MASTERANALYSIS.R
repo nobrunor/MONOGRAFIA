@@ -156,18 +156,12 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadehomem)) +
 item1 <- x %>%
          mutate(taxadeinformalidadeFE1 = (informalfaixaetaria1/ocupfaixaetaria1)*100,
                 taxadeinformalidadeFE2 = (informalfaixaetaria2/ocupfaixaetaria2)*100,
-                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupfaixaetaria3)*100,
-                taxadeinformalidadeFE4 = (informalfaixaetaria4/ocupfaixaetaria4)*100,
-                taxadeinformalidadeFE5 = (informalfaixaetaria5/ocupfaixaetaria5)*100,
-                taxadeinformalidadeFE6 = (informalfaixaetaria6/ocupfaixaetaria6)*100)
+                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupfaixaetaria3)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidadeFE1)) +
-    geom_line(aes(col = "18-24 anos")) +
-    geom_line(aes(y = taxadeinformalidadeFE2, col = "25-29 anos")) +
-    geom_line(aes(y = taxadeinformalidadeFE3, col = "30-39 anos")) +
-    geom_line(aes(y = taxadeinformalidadeFE4, col = "40-49 anos")) +
-    geom_line(aes(y = taxadeinformalidadeFE5, col = "50-59 anos")) +
-    geom_line(aes(y = taxadeinformalidadeFE6, col = "60+ anos")) +
+    geom_line(aes(col = "18-29 anos")) +
+    geom_line(aes(y = taxadeinformalidadeFE2, col = "29-54 anos")) +
+    geom_line(aes(y = taxadeinformalidadeFE3, col = "55+ anos")) +
     geom_vline(xintercept = item1$tempo[33], linetype = 8) +
     theme_bw() +
     labs(x = "Ano",
@@ -360,9 +354,9 @@ ggplot(data = item1, aes(tempo,
           title = "Evolução da Taxa de Ocupação")
 
 
-###################################
-##    evolução da formalidade    ##
-###################################
+###########################################
+##    evolução da taxa de formalidade    ##
+###########################################
 
 item1 <- x %>%
     mutate(formal = sum(formaluf),
@@ -381,7 +375,7 @@ ggplot(data = item1, aes(tempo,
 
 
 ######################################
-##  formalidade por escolaridade  ##
+##   formalidade por escolaridade   ##
 ######################################
 
 item1 <- x %>%
@@ -442,6 +436,7 @@ ggplot(item1, aes(x = tempo, y = taxadeformalidaderenda1)) +
 
 ################################
 ##     ocupados em barra      ##
+##      scales em milhões     ##
 ################################
 
 
@@ -494,10 +489,7 @@ ggplot(item1) +
 item1 <- x %>%
          mutate(taxadeinformalidadeFE1 = (informalfaixaetaria1/ocupfaixaetaria1)*100,
                 taxadeinformalidadeFE2 = (informalfaixaetaria2/ocupfaixaetaria2)*100,
-                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupfaixaetaria3)*100,
-                taxadeinformalidadeFE4 = (informalfaixaetaria4/ocupfaixaetaria4)*100,
-                taxadeinformalidadeFE5 = (informalfaixaetaria5/ocupfaixaetaria5)*100,
-                taxadeinformalidadeFE6 = (informalfaixaetaria6/ocupfaixaetaria6)*100)
+                taxadeinformalidadeFE3 = (informalfaixaetaria3/ocupfaixaetaria3)*100)
 
 ggplot(data = item1, aes(x = taxadeinformalidadeFE1)) +
   geom_histogram() +
