@@ -250,7 +250,7 @@ write.csv(ocupeduc2, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/ocupedu
 
 ocupeduc3 <- data %>%
   select(UF, V1028, Trimestre, Ano, VD4002, VD3004) %>%
-  filter(VD4002 == "1" & (VD3004 == "5" | VD3004 == "6") %>%
+  filter(VD4002 == "1" & (VD3004 == "5" | VD3004 == "6")) %>%
   group_by(Trimestre) %>%
   mutate(aux = sum(V1028)) %>%
   summarise(ocupeduc3 = mean(aux))
