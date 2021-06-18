@@ -183,10 +183,10 @@ item1 <- x %>%
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidaderenda1)) +
     geom_line(aes(col = "até 0,5 SM")) +
-    geom_line(aes(y = taxadeinformalidaderenda2, col = "0,5 - 1 SM")) +
-    geom_line(aes(y = taxadeinformalidaderenda3, col = "1 - 2 SM")) +
-    geom_line(aes(y = taxadeinformalidaderenda4, col = "2 - 3 SM")) +
-    geom_line(aes(y = taxadeinformalidaderenda5, col = "3 - 10 SM")) +
+    geom_line(aes(y = taxadeinformalidaderenda2, col = "0,5 SM + 1 até 1 SM")) +
+    geom_line(aes(y = taxadeinformalidaderenda3, col = "1 SM + 1 até 2 SM")) +
+    geom_line(aes(y = taxadeinformalidaderenda4, col = "2 SM + 1 até 3 SM")) +
+    geom_line(aes(y = taxadeinformalidaderenda5, col = "3 SM + 1 até 10 SM")) +
     geom_line(aes(y = taxadeinformalidaderenda6, col = "Mais de 10 SM")) +
     geom_vline(xintercept = item1$tempo[33], linetype = 8) +
     theme_bw() +
@@ -400,10 +400,10 @@ item1 <- x %>%
 
 ggplot(item1, aes(x = tempo, y = taxadeformalidaderenda1)) +
     geom_line(aes(col = "até 0,5 SM")) +
-    geom_line(aes(y = taxadeformalidaderenda2, col = "0,5 - 1 SM")) +
-    geom_line(aes(y = taxadeformalidaderenda3, col = "1 - 2 SM")) +
-    geom_line(aes(y = taxadeformalidaderenda4, col = "2 - 3 SM")) +
-    geom_line(aes(y = taxadeformalidaderenda5, col = "3 - 10 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda2, col = "0,5 SM + 1 até 1 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda3, col = "1 SM + 1 até 2 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda4, col = "2 SM + 1 até 3 SM")) +
+    geom_line(aes(y = taxadeformalidaderenda5, col = "3 SM + 1 até 10 SM")) +
     geom_line(aes(y = taxadeformalidaderenda6, col = "Mais de 10 SM")) +
     geom_vline(xintercept = item1$tempo[33], linetype = 8) +
     theme_bw() +
@@ -459,6 +459,21 @@ ggplot(item1) +
     theme_bw() +
     labs(x = "Ano",
          y = "Desocupados (em milhões)")
+
+
+#########################
+##    PEA em barra     ##
+#########################
+
+ggplot(item1) +
+    aes(x = tempo, weight = peauf) +
+    geom_bar(fill = "#112446") +
+    scale_y_continuous(labels = transf_eixo) +
+    geom_vline(xintercept = item1$tempo[33], linetype = 8) +
+    geom_vline(xintercept = item1$tempo[37], linetype = 8) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "PEA (em milhões)")
 
 
 ####################################################
