@@ -223,22 +223,16 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidadeeduc1)) +
 
 item1 <- x %>%
          mutate(taxadeinformalidaderaca1 = (informalraca1/ocupraca1)*100,
-                taxadeinformalidaderaca2 = (informalraca2/ocupraca2)*100,
-                taxadeinformalidaderaca3 = (informalraca3/ocupraca3)*100,
-                taxadeinformalidaderaca4 = (informalraca4/ocupraca4)*100,
-                taxadeinformalidaderaca5 = (informalraca5/ocupraca5)*100)
+                taxadeinformalidaderaca2 = (informalraca2/ocupraca2)*100)
 
 ggplot(item1, aes(x = tempo, y = taxadeinformalidaderaca1)) +
-    geom_line(aes(col = "Branca"), size = 1) +
-    geom_line(aes(y = taxadeinformalidaderaca2, col = "Preta"), size = 1) +
-    geom_line(aes(y = taxadeinformalidaderaca3, col = "Amarela"), size = 1) +
-    geom_line(aes(y = taxadeinformalidaderaca4, col = "Parda"), size = 1) +
-    geom_line(aes(y = taxadeinformalidaderaca5, col = "Indígena"), size = 1) +
+    geom_line(aes(col = "Branca e Amarela"), size = 1) +
+    geom_line(aes(y = taxadeinformalidaderaca2, col = "Preta, Parda e Indígena"), size = 1) +
     geom_vline(xintercept = item1$tempo[33], linetype = 8) +
     theme_bw() +
     labs(x = "Ano",
          y = "Em %",
-         title = "Evolução da Informalidade por Cor") +
+         title = "Evolução da Informalidade por Cor ou Raça") +
     theme(legend.position = 'bottom')
 
 ###########################################
@@ -325,6 +319,25 @@ ggplot(data = item1, aes(tempo,
      labs(x = "Ano",
           y = "Em %",
           title = "Evolução da Taxa de Desocupação")
+
+#################################
+##    taxa de subutilização    ##
+#################################
+
+item1 <- x %>%
+         mutate(taxadesub = (subutilizadosuf/peauf)*100)
+
+ggplot(data = item1, aes(tempo,
+                          taxadesub)) +
+     geom_line(color = "blue") +
+     geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 2) +
+     geom_vline(xintercept = item1$tempo[33], linetype = 8) +
+     theme_bw() +
+     labs(x = "Ano",
+          y = "Em %",
+          title = "Evolução da Taxa de Subutilização")
+
+
 
 ############################
 ##    taxa de ocupação    ##
