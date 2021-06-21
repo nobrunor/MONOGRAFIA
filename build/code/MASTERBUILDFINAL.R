@@ -945,6 +945,19 @@ informalscart <- data %>%
 
 write.csv(informalscart, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informalscartuf", yr, ".csv"))
 
+#################
+# informais TFA #
+#################
+
+informaltfa <- data %>%
+  select(UF, V1028, Trimestre, Ano, VD4002, VD4009, VD4012) %>%
+  filter(VD4002 == "1" & (VD4009 == "10")) %>%
+  group_by(Trimestre) %>%
+  mutate(aux = sum(V1028)) %>%
+  summarise(informaltfa = mean(aux))
+
+write.csv(informaltfa, paste0("C:/Users/Bruno/Desktop/MONOGRAFIA/build/tmp/informaltfauf", yr, ".csv"))
+
 
 ########################
 # carteira assinada de cada estado
@@ -1136,6 +1149,7 @@ x <- merge(x, informalsul, by = c("Trimestre"), all = TRUE)
 x <- merge(x, informalcentrooeste, by = c("Trimestre"), all = TRUE)
 x <- merge(x, informalnc, by = c("Trimestre"), all = TRUE)
 x <- merge(x, informalscart, by = c("Trimestre"), all = TRUE)
+x <- merge(x, informaltfa, by = c("Trimestre"), all = TRUE)
 x <- merge(x, informalprim, by = c("Trimestre"), all = TRUE)
 x <- merge(x, informalsec, by = c("Trimestre"), all = TRUE)
 x <- merge(x, informalterc, by = c("Trimestre"), all = TRUE)

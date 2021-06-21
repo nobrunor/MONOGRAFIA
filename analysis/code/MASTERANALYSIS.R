@@ -103,7 +103,8 @@ item1 <- x %>%
            informalnc = sum(informalncuf),
            taxadeinformalidade = (informaluf/ocupuf)*100,
            taxadeinformalidadenc = (informalncuf/ocupuf)*100,
-           taxadeinformalidadescart = (informalscart/ocupuf)*100)
+           taxadeinformalidadescart = (informalscart/ocupuf)*100,
+           taxadeinformalidadetfa = (informaltfa/ocupuf)*100)
 
 ggplot(data = item1, aes(tempo,
                           taxadeinformalidade)) +
@@ -124,6 +125,22 @@ ggplot(item1, aes(x = tempo, y = taxadeinformalidade)) +
     geom_line(aes(col = "Taxa de Informalidade"), size = 1) +
     geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos Não Contribuintes"), size = 1) +
     geom_line(aes(y = taxadeinformalidadescart, col = "Taxa de Informalidade dos Sem Carteira Assinada"), size = 1) +
+    geom_vline(xintercept = item1$tempo[33], linetype = 8) +
+    theme_bw() +
+    labs(x = "Ano",
+         y = "Em %",
+         title = "Decomposição da Informalidade") +
+    theme(legend.position = 'bottom')
+
+#####################################
+## inf x infnc x infscart x inftfa ##
+#####################################
+
+ggplot(item1, aes(x = tempo, y = taxadeinformalidade)) +
+    geom_line(aes(col = "Taxa de Informalidade"), size = 1) +
+    geom_line(aes(y = taxadeinformalidadenc, col = "Taxa de Informalidade dos Não Contribuintes"), size = 1) +
+    geom_line(aes(y = taxadeinformalidadescart, col = "Taxa de Informalidade dos Sem Carteira Assinada"), size = 1) +
+    geom_line(aes(y = taxadeinformalidadetfa, col = "Taxa de Informalidade dos TFA"), size = 1) +
     geom_vline(xintercept = item1$tempo[33], linetype = 8) +
     theme_bw() +
     labs(x = "Ano",
